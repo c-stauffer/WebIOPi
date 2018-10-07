@@ -36,7 +36,7 @@ Check out [SemVer](http://semver.org/) for versioning guidelines.
 
 * **Chris Stauffer** - *Initial work* - [c-stauffer](https://github.com/c-stauffer)
 
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+See also the list of [contributors](https://github.com/c-stauffer/WebIOPiClient/contributors) who participated in this project.
 
 <br>
 
