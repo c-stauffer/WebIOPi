@@ -16,7 +16,7 @@ The library is built against .NET Standard 2.0 (see [here](https://docs.microsof
 
 ## Deployment
 
-Check out the [NuGet pacakge](https://www.nuget.org/packages/WebIOPiClient).
+Check out the [NuGet package](https://www.nuget.org/packages/WebIOPiClient).
 
 <br>
 
