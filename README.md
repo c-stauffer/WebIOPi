@@ -6,7 +6,7 @@ This project aims to make connecting to devices running [WebIOPi](https://webiop
 
 ## Getting Started
 
-A NuGet package is planned but not yet implemented, so for now the best way to get up and running is to clone the repository and build the project.
+A NuGet package is [now available](https://www.nuget.org/packages/WebIOPiClient), but you can also clone the repository and build the project.
 
 ### Prerequisites
 
@@ -16,7 +16,7 @@ The library is built against .NET Standard 2.0 (see [here](https://docs.microsof
 
 ## Deployment
 
-Again, in lieu of a proper NuGet package, you will need to build the DLL yourself, include in your project, and deploy that way.
+Check out the [NuGet pacakge](https://www.nuget.org/packages/WebIOPiClient).
 
 <br>
 
