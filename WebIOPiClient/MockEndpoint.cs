@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -40,6 +41,31 @@ namespace WebIOPiClient
             return Task.FromResult(_list.Single(p => p.PinNumber == gpioNumber).Value);
         }
 
+        public Task<int> OutputBitSequence(int gpioNumber, int period, string bits)
+        {
+            if (string.IsNullOrEmpty(bits))
+                throw new ArgumentException("Empty bit stream.", nameof(bits));
+            if (bits.Any(b => !new[] { '0', '1' }.Contains(b)))
+                throw new ArgumentException("Invalid bit sequence.", nameof(bits));
+            if (period < 0)
+                throw new ArgumentException("Delay period must be non-negative.", nameof(period));
+            return Task.FromResult(int.Parse(bits.Last().ToString()));
+        }
+
+        public Task<string> OutputPWM(int gpioNumber, float pulseRatio)
+        {
+            if (pulseRatio < 0.0f || pulseRatio > 1.0f)
+                throw new ArgumentException("Pulse ratio out of range [0.0 - 1.0].", nameof(pulseRatio));
+            return Task.FromResult("result");
+        }
+
+        public Task<string> OutputPWM(int gpioNumber, int angle)
+        {
+            if (angle < -45 || angle > 45)
+                throw new ArgumentException("Pulse angle out of range [-45 - +45].", nameof(angle));
+            return Task.FromResult("result");
+        }
+
         /// <summary>
         /// Sends a single pulse to the specified pin
         /// </summary>
@@ -79,6 +105,28 @@ namespace WebIOPiClient
         {
             _list.Single(p => p.PinNumber == gpioNumber).Value = value;
             return Task.FromResult(_list.Single(p => p.PinNumber == gpioNumber).Value);
+        }
+
+        private const string ExampleStatus = 
+            @"{""UART0"": 1, ""I2C0"": 0, ""I2C1"": 1, ""SPI0"": 0, ""GPIO"":{
+                    ""0"": { ""function"": ""IN"", ""value"": 1}, 
+                    ""1"": { ""function"": ""IN"", ""value"": 1}, 
+                    ""2"": { ""function"": ""ALT0"", ""value"": 1}, 
+                    ""3"": { ""function"": ""ALT0"", ""value"": 1}, 
+                    ""4"": { ""function"": ""IN"", ""value"": 0}, 
+                    ""5"": { ""function"": ""ALT0"", ""value"": 0}, 
+                    ""6"": { ""function"": ""OUT"", ""value"": 1}, 
+                    ""53"": { ""function"": ""ALT3"", ""value"": 1}
+                 }}";
+
+        public Task<GPIOState> GetGPIOState()
+        {
+            return Task.FromResult(GPIOState.FromJSONString(ExampleStatus));
+        }
+
+        public Task<string> GetGPIOStateJSON()
+        {
+            return Task.FromResult(ExampleStatus);
         }
 
         private class GPIO
