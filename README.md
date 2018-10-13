@@ -6,7 +6,7 @@ This project aims to make connecting to devices running [WebIOPi](https://webiop
 
 ## Getting Started
 
-A NuGet package is [now available](https://www.nuget.org/packages/WebIOPiClient), but you can also clone the repository and build the project.
+A NuGet package is [now available](https://www.nuget.org/packages/WebIOPiClient), but continuous integration/deployment is not yet implemented so it may be out of date. If you have Visual Studio 2017, you can build the project yourself.
 
 ### Prerequisites
 
