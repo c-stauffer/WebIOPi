@@ -145,9 +145,15 @@ namespace WebIOPiClient
         /// <returns>GPIOState with current status/configuration.</returns>
         public async Task<GPIOState> GetGPIOState()
         {
-            var response = await _client.GetAsync(GetFullUrl($"/*"));
-            response.EnsureSuccessStatusCode();
-            return GPIOState.FromJSONString(await GetGPIOStateJSON());
+            // After doing more investigating on this, parsing is not yet feasible... The returned
+            // JSON I've been seeing differs a decent amount from the example. Not sure if it's
+            // different per model of Pi device, but doing this right will require digging through
+            // the WebIOPi code to figure out how it builds the response.
+            
+            ////var response = await _client.GetAsync(GetFullUrl($"/*"));
+            ////response.EnsureSuccessStatusCode();
+            ////return GPIOState.FromJSONString(await GetGPIOStateJSON());
+            throw new NotImplementedException();
         }
 
         /// <summary>
