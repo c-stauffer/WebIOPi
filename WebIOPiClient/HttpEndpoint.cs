@@ -153,6 +153,7 @@ namespace WebIOPiClient
             ////var response = await _client.GetAsync(GetFullUrl($"/*"));
             ////response.EnsureSuccessStatusCode();
             ////return GPIOState.FromJSONString(await GetGPIOStateJSON());
+            await Task.CompletedTask;
             throw new NotImplementedException();
         }
 
